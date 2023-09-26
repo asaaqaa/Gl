@@ -2,7 +2,7 @@
   "name": "𝗭𝗧𝗵𝗼𝗻",
   "description": "〔 سـورس زدثــون 𝗭𝗲𝗱𝗧𝗵𝗼𝗻 𓅛 〕التحـديث الجديـد افضـل سـورسـات تليثـون يـوزربـوت العربيـة : › عربـي بالكـامل › تحديثـات متواصـله › مبنـي ع آخـر اصـدار مـن لغـة بايثـون〔 Python 3.10 〕- مطـور السـورس : زلـزال الهيبـه ",
   "logo": "https://telegra.ph/file/c91c09fb188f0f281e628.jpg",
-  "keywords": ["plugin","modular","productivity"],
+  "keywords": ["plugin","Zara","modular","productivity"],
   "repository": "https://github.com/asaaqaa/Gl",
   "website": "#TODO",
   "success_url": "#TODO",
@@ -75,7 +75,7 @@
     "url": "heroku/python"
   }],
   "formation": {
-    "worker": {
+    "web": {
       "quantity": 1,
       "size": "Basic"
     }
