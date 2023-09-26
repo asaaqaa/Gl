@@ -2,4 +2,4 @@ build:
   docker:
       web: Dockerfile
 run:
-   web: PASH Zara
+   web: python3 -m ki
