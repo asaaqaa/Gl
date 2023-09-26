@@ -21,7 +21,7 @@ from telethon.tl.types import ChatPhotoEmpty, InputChatUploadedPhoto
 from telethon.utils import get_peer_id
 
 from Zara import (
-    BOT_TOKEN,
+    TG_BOT_TOKEN,
     BOTLOG_CHATID,
     CMD_HELP,
     HEROKU_API_KEY,
@@ -186,7 +186,7 @@ async def autobot():
                 BOTLOG_CHATID,
                 "**SEDANG MERESTART USERBOT HARAP TUNGGU KONTOL.**",
             )
-            heroku_var["BOT_TOKEN"] = token 
+            heroku_var["TG_BOT_TOKEN"] = token 
             heroku_var["BOT_USERNAME"] = f"@{username}"
         else:
             LOGS.info(
@@ -243,7 +243,7 @@ def load_module(shortname):
     if shortname.startswith("__"):
         pass
     elif shortname.endswith("_"):
-        path = Path(f"Userbot/modules/{shortname}.py")
+        path = Path(f"Zara/modules/{shortname}.py")
         name = "Userbot.modules.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
@@ -263,43 +263,3 @@ def load_module(shortname):
         # for imports
         sys.modules["AyiinXd.modules." + shortname] = mod
         LOGS.info("Successfully imported " + shortname)
-
-
-def start_assistant(shortname):
-    if shortname.startswith("__"):
-        pass
-    elif shortname.endswith("_"):
-        path = Path(f"Userbot/modules/assistant/{shortname}.py")
-        name = "Userbot.modules.assistant.{}".format(shortname)
-        spec = importlib.util.spec_from_file_location(name, path)
-        mod = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(mod)
-        LOGS.info("Starting Your Assistant Bot.")
-        LOGS.info("Assistant Sucessfully imported " + shortname)
-    else:
-        path = Path(f"userbot/modules/assistant/{shortname}.py")
-        name = "Userbot.modules.assistant.{}".format(shortname)
-        spec = importlib.util.spec_from_file_location(name, path)
-        mod = importlib.util.module_from_spec(spec)
-        mod.tgbot = bot.tgbot
-        spec.loader.exec_module(mod)
-        sys.modules["userbot.modules.assistant" + shortname] = mod
-        LOGS.info("Assistant Successfully imported" + shortname)
-
-
-def remove_plugin(shortname):
-    try:
-        try:
-            for i in CMD_HELP[shortname]:
-                bot.remove_event_handler(i)
-            del CMD_HELP[shortname]
-
-        except BaseException:
-            name = f"userbot.modules.{shortname}"
-
-            for i in reversed(range(len(bot._event_builders))):
-                ev, cb = bot._event_builders[i]
-                if cb.__module__ == name:
-                    del bot._event_builders[i]
-    except BaseException:
-        raise ValueError
