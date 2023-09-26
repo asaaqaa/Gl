@@ -2,4 +2,4 @@ build:
   docker:
       web: Dockerfile
 run:
-   web: PASH ki
+   web: PASH Zara
