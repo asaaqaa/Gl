@@ -1,1 +1,1 @@
-worker: bash ki
+web: bash ki
